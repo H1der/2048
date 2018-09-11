@@ -43,15 +43,15 @@ public class GameView extends GridLayout {
                         offsetY = event.getY() - startY;
                         if (Math.abs(offsetX) > Math.abs(offsetY)) {
                             if (offsetX < 0) {
-                                Toast.makeText(getContext(), "left", Toast.LENGTH_SHORT).show();
+                                swipeLeft();
                             } else if (offsetX > 0) {
-                                Toast.makeText(getContext(), "right", Toast.LENGTH_SHORT).show();
+                                swipeRight();
                             }
                         } else {
                             if (offsetY < 0) {
-                                Toast.makeText(getContext(), "up", Toast.LENGTH_SHORT).show();
+                                swipeUp();
                             } else if (offsetY > 0) {
-                                Toast.makeText(getContext(), "down", Toast.LENGTH_SHORT).show();
+                                swipeDown();
                             }
                         }
                         break;
@@ -64,25 +64,114 @@ public class GameView extends GridLayout {
         });
     }
 
-    private void swipeLeft(){
-        for (int y = 0;y<4;y++){
-            for (int x = 0;x<4;x++){
-                for (int x1= x+1;x1<4;x1++){
-                    if (cardsMap[x1][y].getNum()>0){
-                        if (cardsMap[x][y].getNum()<=0){
+    private void swipeLeft() {
+        boolean add = false;
+        for (int y = 0; y < 4; y++) {
+            for (int x = 0; x < 4; x++) {
+                for (int x1 = x + 1; x1 < 4; x1++) {
+                    if (cardsMap[x1][y].getNum() > 0) {
+                        if (cardsMap[x][y].getNum() <= 0) {
                             cardsMap[x][y].setNum(cardsMap[x1][y].getNum());
                             cardsMap[x1][y].setNum(0);
                             x--;
-                        }else if (cardsMap[x][y].equals(cardsMap[x1][y])){
-                            cardsMap[x][y].setNum(cardsMap[x1][y].getNum()*2);
-                            cardsMap[x][y].setNum(0);
+                            add = true;
+                        } else if (cardsMap[x][y].equals(cardsMap[x1][y])) {
+                            cardsMap[x][y].setNum(cardsMap[x1][y].getNum() * 2);
+                            cardsMap[x1][y].setNum(0);
+                            MainActivity.addScore(cardsMap[x][y].getNum());
+                            add = true;
                         }
                         break;
                     }
                 }
             }
         }
+        if (add) {
+            addRandomNum();
+        }
     }
+
+    private void swipeRight() {
+        boolean add = false;
+        for (int y = 0; y < 4; y++) {
+            for (int x = 3; x >= 0; x--) {
+                for (int x1 = x-1; x1 >=0; x1--) {
+                    if (cardsMap[x1][y].getNum() > 0) {
+                        if (cardsMap[x][y].getNum() <= 0) {
+                            cardsMap[x][y].setNum(cardsMap[x1][y].getNum());
+                            cardsMap[x1][y].setNum(0);
+                            x++;
+                            add = true;
+                        } else if (cardsMap[x][y].equals(cardsMap[x1][y])) {
+                            cardsMap[x][y].setNum(cardsMap[x][y].getNum() * 2);
+                            cardsMap[x1][y].setNum(0);
+                            MainActivity.addScore(cardsMap[x][y].getNum());
+                            add = true;
+                        }
+                        break;
+                    }
+                }
+            }
+        }
+        if (add) {
+            addRandomNum();
+        }
+    }
+
+    private void swipeUp() {
+        boolean add = false;
+        for (int x = 0; x < 4; x++) {
+            for (int y = 0; y < 4; y++) {
+                for (int y1 = y + 1; y1 < 4; y1++) {
+                    if (cardsMap[x][y1].getNum() > 0) {
+                        if (cardsMap[x][y].getNum() <= 0) {
+                            cardsMap[x][y].setNum(cardsMap[x][y1].getNum());
+                            cardsMap[x][y1].setNum(0);
+                            y--;
+                            add = true;
+                        } else if (cardsMap[x][y].equals(cardsMap[x][y1])) {
+                            cardsMap[x][y].setNum(cardsMap[x][y1].getNum() * 2);
+                            cardsMap[x][y1].setNum(0);
+                            MainActivity.addScore(cardsMap[x][y].getNum());
+                            add = true;
+                        }
+                        break;
+                    }
+                }
+            }
+        }
+        if (add) {
+            addRandomNum();
+        }
+    }
+
+    private void swipeDown() {
+        boolean add = false;
+        for (int x = 0; x < 4; x++) {
+            for (int y = 3; y >= 0; y--) {
+                for (int y1 = y - 1; y1 >= 0; y1--) {
+                    if (cardsMap[x][y1].getNum() > 0) {
+                        if (cardsMap[x][y].getNum() <= 0) {
+                            cardsMap[x][y].setNum(cardsMap[x][y1].getNum());
+                            cardsMap[x][y1].setNum(0);
+                            y++;
+                            add = true;
+                        } else if (cardsMap[x][y].equals(cardsMap[x][y1])) {
+                            cardsMap[x][y].setNum(cardsMap[x][y1].getNum() * 2);
+                            cardsMap[x][y1].setNum(0);
+                            MainActivity.addScore(cardsMap[x][y].getNum());
+                            add = true;
+                        }
+                        break;
+                    }
+                }
+            }
+        }
+        if (add) {
+            addRandomNum();
+        }
+    }
+
 
     private void addRandomNum() {
         lists.clear();
@@ -98,7 +187,7 @@ public class GameView extends GridLayout {
     }
 
 
-    private void startGame() {
+    public void startGame() {
         for (int y = 0; y < 4; y++) {
             for (int x = 0; x < 4; x++) {
                 cardsMap[x][y].setNum(0);

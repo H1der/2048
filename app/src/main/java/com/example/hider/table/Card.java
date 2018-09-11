@@ -32,6 +32,48 @@ public class Card extends FrameLayout {
         } else {
             tv.setText("" + num);
         }
+
+        switch (num) {
+            case 0:
+                tv.setBackgroundColor(0x33ffffff);
+                break;
+            case 2:
+                tv.setBackgroundColor(0xffeee4da);
+                break;
+            case 4:
+                tv.setBackgroundColor(0xffede0c8);
+                break;
+            case 8:
+                tv.setBackgroundColor(0xfff2b179);
+                break;
+            case 16:
+                tv.setBackgroundColor(0xfff59563);
+                break;
+            case 32:
+                tv.setBackgroundColor(0xfff67c5f);
+                break;
+            case 64:
+                tv.setBackgroundColor(0xfff65e3b);
+                break;
+            case 128:
+                tv.setBackgroundColor(0xffedcf72);
+                break;
+            case 256:
+                tv.setBackgroundColor(0xffedcc61);
+                break;
+            case 512:
+                tv.setBackgroundColor(0xffedc850);
+                break;
+            case 1024:
+                tv.setBackgroundColor(0xffedc53f);
+                break;
+            case 2048:
+                tv.setBackgroundColor(0xffedc22e);
+                break;
+            default:
+                tv.setBackgroundColor(0xff3c3a32);
+                break;
+        }
     }
 
     public boolean equals(Card c){

@@ -21,15 +21,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="40dp"
-            android:text="2048"
-            android:textSize="20dp" />
+            android:textSize="20dp"
+            android:id="@+id/score"
+            />
     </LinearLayout>
 
     <com.example.hider.table.GameView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="20dp"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:id="@+id/gameview">
 
     </com.example.hider.table.GameView>
 
@@ -38,5 +40,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="70dp"
         android:text="重新开始"
-        android:textSize="20dp" />
+        android:textSize="20dp"
+        android:id="@+id/reStar"
+        />
 </LinearLayout>
