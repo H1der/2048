@@ -24,7 +24,10 @@ public class GameView extends GridLayout {
 
     private void initGame() {
         setColumnCount(4);
-        setBackgroundColor(0xffbbada0);
+//        setBackgroundColor(0xffff00ff);
+//        setBackgroundColor(0xffbbada0);
+//        setBackgroundResource(R.drawable.bk);
+        setBackgroundColor(0x00000000);
         addCard(GetCardWidth(), GetCardWidth());
         startGame();
 
@@ -64,6 +67,7 @@ public class GameView extends GridLayout {
         });
     }
 
+    //    向左滑动
     private void swipeLeft() {
         boolean add = false;
         for (int y = 0; y < 4; y++) {
@@ -91,6 +95,7 @@ public class GameView extends GridLayout {
         }
     }
 
+    //向右滑动
     private void swipeRight() {
         boolean add = false;
         for (int y = 0; y < 4; y++) {
@@ -118,6 +123,7 @@ public class GameView extends GridLayout {
         }
     }
 
+    //向上滑动
     private void swipeUp() {
         boolean add = false;
         for (int x = 0; x < 4; x++) {
@@ -145,6 +151,7 @@ public class GameView extends GridLayout {
         }
     }
 
+    //向下滑动
     private void swipeDown() {
         boolean add = false;
         for (int x = 0; x < 4; x++) {
@@ -173,6 +180,7 @@ public class GameView extends GridLayout {
     }
 
 
+    //    添加随机数
     private void addRandomNum() {
         lists.clear();
         for (int y = 0; y < 4; y++) {
@@ -187,6 +195,7 @@ public class GameView extends GridLayout {
     }
 
 
+    //开始游戏
     public void startGame() {
         for (int y = 0; y < 4; y++) {
             for (int x = 0; x < 4; x++) {
@@ -198,6 +207,7 @@ public class GameView extends GridLayout {
     }
 
 
+    //添加卡片
     private void addCard(int cardWidth, int cardHeight) {
         Card c;
         for (int y = 0; y < 4; y++) {
@@ -218,6 +228,7 @@ public class GameView extends GridLayout {
 //    }
 
 
+    //获取卡片宽度
     private int GetCardWidth() {
 
         //屏幕信息的对象

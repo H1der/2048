@@ -1,6 +1,7 @@
 package com.example.hider.table;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.support.annotation.NonNull;
 import android.view.Gravity;
 import android.widget.FrameLayout;
@@ -13,9 +14,13 @@ public class Card extends FrameLayout {
     public Card(@NonNull Context context) {
         super(context);
         tv = new TextView(getContext());
-        tv.setTextSize(32);
+        tv.setTextSize(50);
         tv.setGravity(Gravity.CENTER);
-        tv.setBackgroundColor(0x33ffffff);
+//        tv.setBackgroundResource(R.drawable.bk);
+//        tv.setBackgroundColor(0x33ffffff);
+        tv.setBackgroundColor(0x70FFFFFF);
+        tv.setTextColor(0xFFFF0000);
+        tv.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
         LayoutParams params = new LayoutParams(-1, -1);
         params.setMargins(10, 10, 0, 0);
         addView(tv, params);
@@ -25,6 +30,8 @@ public class Card extends FrameLayout {
         return num;
     }
 
+
+    //设置数字并且给每个数字设置专属素材
     public void setNum(int num) {
         this.num = num;
         if (this.num <= 0) {
@@ -35,47 +42,61 @@ public class Card extends FrameLayout {
 
         switch (num) {
             case 0:
-                tv.setBackgroundColor(0x33ffffff);
+                tv.setBackgroundColor(0x70FFFFFF);
                 break;
             case 2:
-                tv.setBackgroundColor(0xffeee4da);
+                tv.setBackgroundResource(R.drawable.xg);
+                tv.getBackground().setAlpha(200);
                 break;
             case 4:
-                tv.setBackgroundColor(0xffede0c8);
+                tv.setBackgroundResource(R.drawable.kl);
+                tv.getBackground().setAlpha(200);
                 break;
             case 8:
-                tv.setBackgroundColor(0xfff2b179);
+                tv.setBackgroundResource(R.drawable.xb);
+                tv.getBackground().setAlpha(200);
                 break;
             case 16:
-                tv.setBackgroundColor(0xfff59563);
+//                tv.setBackgroundColor(0xfff59563);
+                tv.setBackgroundResource(R.drawable.nm);
+                tv.getBackground().setAlpha(200);
                 break;
             case 32:
-                tv.setBackgroundColor(0xfff67c5f);
+                tv.setBackgroundResource(R.drawable.mj);
+                tv.getBackground().setAlpha(200);
                 break;
             case 64:
-                tv.setBackgroundColor(0xfff65e3b);
+                tv.setBackgroundResource(R.drawable.tx);
+                tv.getBackground().setAlpha(200);
                 break;
             case 128:
-                tv.setBackgroundColor(0xffedcf72);
+                tv.setBackgroundResource(R.drawable.bql);
+                tv.getBackground().setAlpha(200);
                 break;
             case 256:
-                tv.setBackgroundColor(0xffedcc61);
+                tv.setBackgroundResource(R.drawable.px);
+                tv.getBackground().setAlpha(200);
                 break;
             case 512:
-                tv.setBackgroundColor(0xffedc850);
+                tv.setBackgroundResource(R.drawable.sm);
+                tv.getBackground().setAlpha(200);
                 break;
             case 1024:
-                tv.setBackgroundColor(0xffedc53f);
+                tv.setBackgroundResource(R.drawable.hx);
+                tv.getBackground().setAlpha(200);
                 break;
             case 2048:
-                tv.setBackgroundColor(0xffedc22e);
+                tv.setBackgroundResource(R.drawable.hmbb);
+                tv.getBackground().setAlpha(200);
                 break;
             default:
-                tv.setBackgroundColor(0xff3c3a32);
+                tv.setBackgroundColor(0x70FFFFFF);
                 break;
         }
     }
 
+
+    //是否相等
     public boolean equals(Card c){
         return getNum()==c.getNum();
     }
